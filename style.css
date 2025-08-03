@@ -1,0 +1,50 @@
+:root{--color-principal:#d88a9a;--color-secundario:#b36a7a;--color-fondo-oscuro:#4d2d3a;--color-brillo:#f5c3d1;--color-texto:#fff}
+body{margin:0;font-family:'Cormorant Garamond',serif;background:linear-gradient(135deg,var(--color-fondo-oscuro),var(--color-secundario),var(--color-principal));background-attachment:fixed;background-size:400% 400%;animation:feminineGradient 15s ease infinite;color:var(--color-texto)}
+@keyframes feminineGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+#start-screen{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;text-align:center;flex-direction:column;z-index:2000;transition:opacity .5s ease-out}
+.start-content h1{font-family:'Playfair Display',serif;font-size:5em;margin:0;text-shadow:3px 3px 15px rgba(0,0,0,.8)}
+.start-content .subtitle{font-size:1.5em;margin-top:-10px;color:rgba(255,255,255,.8);text-shadow:1px 1px 5px rgba(0,0,0,.7)}
+.start-icon{width:80px;margin-bottom:20px;filter:drop-shadow(0 0 15px var(--color-brillo));animation:floatIcon 3s ease-in-out infinite}
+@keyframes floatIcon{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+#start-button,#restart-button{background-color:var(--color-principal);color:var(--color-texto);border:2px solid var(--color-brillo);padding:15px 40px;font-size:1.3em;font-weight:700;border-radius:50px;cursor:pointer;margin-top:30px;text-transform:uppercase;box-shadow:0 4px 20px rgba(0,0,0,.4);transition:all .3s ease}
+#start-button:hover,#restart-button:hover{background-color:var(--color-brillo);color:var(--color-fondo-oscuro);transform:scale(1.05) translateY(-5px);box-shadow:0 8px 25px rgba(255,194,209,.5)}
+.header-container{position:sticky;top:0;z-index:100;background:linear-gradient(180deg,rgba(77,45,58,1) 0%,rgba(77,45,58,.8) 80%,rgba(77,45,58,0) 100%);padding:10px 20px;margin-bottom:20px}
+.header{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:0 auto}
+.title-container{display:flex;align-items:center}
+.logo-image{width:60px;height:60px;margin-right:15px}
+h1{font-family:'Playfair Display',serif;font-size:2em;margin:0;text-shadow:1px 1px 5px rgba(0,0,0,.5)}
+#timer-container{font-size:1.5em;background:rgba(0,0,0,.3);padding:10px 20px;border-radius:12px;display:inline-block;border:1px solid rgba(255,255,255,.2)}
+.game-board{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;perspective:1000px;padding:0 20px;max-width:600px;margin:0 auto;padding-bottom:40vh}
+.card{width:120px;height:120px;position:relative;transform-style:preserve-3d;transition:transform .6s,box-shadow .3s;cursor:pointer}
+
+/* ======== NUEVAS REGLAS DE CSS BASADAS EN ESTADOS ======== */
+
+/* Las cartas en estado 'flipped' O 'matched' estarán volteadas */
+.card[data-state="flipped"],
+.card[data-state="matched"] {
+  transform: rotateY(180deg);
+}
+
+/* Solo las cartas en estado 'matched' tendrán el brillo */
+.card[data-state="matched"] {
+  cursor: default;
+  opacity: 0.9;
+  box-shadow: 0 0 20px 5px var(--color-brillo);
+}
+
+/* -------------------------------------------------------- */
+
+.card-face{position:absolute;width:100%;height:100%;backface-visibility:hidden;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,.2);overflow:hidden}
+.card-front{background:rgba(255,255,255,.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.2);transform:rotateY(180deg)}
+.card-back{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.2)}
+.card img{width:100%;height:100%;object-fit:cover}
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center;z-index:1000}
+.modal-content{background:var(--color-fondo-oscuro);padding:30px;border-radius:15px;text-align:center;border:2px solid var(--color-principal);box-shadow:0 0 20px rgba(245,195,209,.5);animation:zoomIn .5s ease}
+#end-game-message{font-family:'Playfair Display',serif;font-size:2em;color:var(--color-brillo);margin:0 0 15px 0;text-shadow:1px 1px 10px rgba(0,0,0,.5)}
+#final-image{max-width:300px;border-radius:10px;margin-bottom:20px}
+#restart-button{font-size:1.2em;padding:15px 30px}
+.hidden{display:none!important}
+@keyframes zoomIn{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@media (max-width:600px){.game-board{grid-template-columns:repeat(4,1fr);max-width:450px}.card{width:80px;height:80px}.logo-image{width:45px;height:45px}h1{font-size:1.5em}}
+@media (max-width:500px){.game-board{grid-template-columns:repeat(3,1fr);max-width:380px}.card{width:90px;height:90px}}

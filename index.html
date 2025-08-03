@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Memoria - Vicenzo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Cormorant+Garamond:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="start-screen">
+        <div class="start-content">
+            <!-- ASEGÚRATE DE QUE EL NOMBRE DEL ARCHIVO SEA CORRECTO -->
+            <img src="img/lighter-icon.png" alt="Icono Encendedor" class="start-icon">
+            <h1>Vincenzo</h1>
+            <p class="subtitle">Juego de Memoria</p>
+            <button id="start-button">Iniciar Juego</button>
+        </div>
+    </div>
+
+    <main id="main-content" class="hidden">
+        <div class="header-container">
+            <div class="header">
+                <div class="title-container">
+                    <!-- LOGO AQUÍ -->
+                    <img src="img/icon.png" alt="Mi Logo" class="logo-image">
+                    <h1>Juego de Memoria</h1>
+                </div>
+                <div id="timer-container">
+                    <span class="timer-icon">⏳</span> Tiempo: <span id="time">60</span>s
+                </div>
+            </div>
+        </div>
+        <div class="game-board" id="game-board"></div>
+    </main>
+
+    <div id="end-game-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2 id="end-game-message"></h2>
+            <img id="final-image" src="" alt="Resultado Final">
+            <button id="restart-button">Volver a Jugar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
